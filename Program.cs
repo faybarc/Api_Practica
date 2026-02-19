@@ -12,6 +12,7 @@ namespace API_Practica
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -37,11 +38,11 @@ namespace API_Practica
 
             builder.Services.AddCors(options =>
             { options.AddPolicy("AllowFrontend", Policy =>
-            { Policy.WithOrigins("http://127.0.0.1:3000")
+            { Policy.WithOrigins()
                     .AllowAnyHeader()
                     .AllowAnyMethod();
-            });
                 });
+            });
 
             builder.Services.AddScoped<IPersona, PersonaServices>();
             builder.Services.AddScoped<IMascota, MascotaServices>();
@@ -49,11 +50,16 @@ namespace API_Practica
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            //if (app.Environment.IsDevelopment())
+            //{
+            //}
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                c.SwaggerEndpoint("/swgger/v1/swagger.json", "Mi API v1");
+                c.RoutePrefix = "swagger";
+            });
 
             app.UseHttpsRedirection();
 
