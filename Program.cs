@@ -37,8 +37,8 @@ namespace API_Practica
                     ));
 
             builder.Services.AddCors(options =>
-            { options.AddPolicy("AllowFrontend", Policy =>
-            { Policy.WithOrigins()
+            { options.AddPolicy("AllowAll", Policy =>
+            { Policy.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
@@ -63,7 +63,7 @@ namespace API_Practica
 
             app.UseHttpsRedirection();
 
-            app.UseCors("AllowFrontend");
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
