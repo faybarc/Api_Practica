@@ -57,7 +57,7 @@ namespace API_Practica
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swgger/v1/swagger.json", "Mi API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mi API v1");
                 c.RoutePrefix = "swagger";
             });
 
