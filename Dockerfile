@@ -13,7 +13,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["API_Practica/API_Practica.csproj", "API_Practica/"]
-RUN dotnet restore "./API_Practica/API_Practica.csproj"
+RUN dotnet restore "./API_Practica.csproj"
 COPY . .
 WORKDIR "/src/API_Practica"
 RUN dotnet build "./API_Practica.csproj" -c $BUILD_CONFIGURATION -o /app/build
