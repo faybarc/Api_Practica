@@ -12,7 +12,7 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["API_Practica/API_Practica.csproj", "API_Practica/"]
+COPY ["API_Practica.csproj", "./"]
 RUN dotnet restore "./API_Practica.csproj"
 COPY . .
 WORKDIR "/src/API_Practica"
